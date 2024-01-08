@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="index.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
     <title>Zentrades</title>
 </head>
 <body>
-
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
@@ -20,17 +20,46 @@
       <img style="width: 60px; margin: 4px 20px 10px 0;"  src="icons8-login-50.png" id="icon" alt="User Icon" />
     </div>
 
+    <form onsubmit="return validateForm()">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" required>
+      <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" required>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
     
-  <form>
-    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Please enter a valid email address" required>
-    <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@]+$" title="Password must contain an uppercase letter, a number, and should not include special characters other than @." required>
-    <input type="submit" class="fadeIn fourth" value="Log In">
-  </form>
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>
     </div>
 
   </div>
 </div>
+
+<script>
+  function validateForm() {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@]+$/;
+    
+    var email = document.getElementById('login').value;
+    var password = document.getElementById('password').value;
+
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email address');
+      return false;
+    }
+
+    if (!passwordRegex.test(password)) {
+      alert('Password must contain an uppercase letter, a number, and should not include special characters other than @.');
+      return false;
+    }
+
+    if (password === 'SmartServTest@123') {
+      window.location.href = 'dashboard.html';
+      return false; 
+    } else {
+      alert('Incorrect password. Please try again.');
+      return false;
+    }
+  }
+</script>
+
 </body>
 </html>
