@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="index.css">
+    <title>Zentrades</title>
+</head>
+<body>
+
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <h3 style="font-family: Georgia, 'Times New Roman', Times, serif;">ZenTrades</h3>
+    <div class="fadeIn first">
+      <img style="width: 60px; margin: 4px 20px 10px 0;"  src="icons8-login-50.png" id="icon" alt="User Icon" />
+    </div>
+
+    
+  <form>
+    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Please enter a valid email address" required>
+    <input type="text" id="password" class="fadeIn third" name="password" placeholder="Password" pattern="^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d@]+$" title="Password must contain an uppercase letter, a number, and should not include special characters other than @." required>
+    <input type="submit" class="fadeIn fourth" value="Log In">
+  </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
