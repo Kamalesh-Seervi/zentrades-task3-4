@@ -2,11 +2,149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dashboard</title>
+    <title>Charts</title>
 </head>
+<style>
+    body {
+        background-color: #eee;
+    }
+    .cardHolder {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: stretch; 
+    }
+    .card {
+        flex: 1;
+        margin: 0.5em;
+        height: 100px;
+        min-width: 200px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+        transition: all 0.25s ease;
+        animation: populate 0.5s ease-out normal backwards;
+        border-width: 30px;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        z-index: 1;
+        box-shadow: 0 5px 12px rgba(0, 0, 0, .2);
+    }
+    @keyframes populate {
+        0% {
+            transform: scale(0);
+        }
+    }
+</style>
 <body>
+    <div>
+        <div>
+            <h1>Company Metrics</h1>
+        </div>
+       
+                <div class="cardHolder" style="display:flex; flex-direction:row; justify-content: space-around;">
+                    <div style="display:flex; flex-direction:row; gap: 50px;">
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                    </div>
+                    <div style="display:flex; flex-direction:row; gap: 50px;">
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                        <div class="card"></div>
+                    </div>
+            
+                  </div>
+                
+        <div style="display: inline-block; position: relative; width: 50%; display: flex;">
+            <canvas id="myChart"></canvas>
+            <canvas id="myChart2"></canvas>
+        </div>
+          
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        <script>
+        const ctx = document.getElementById('myChart');
+        const ctx2 = document.getElementById('myChart2');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsize: true,
+                plugins: {
+               title: {
+                  display: true,
+                  text: 'Revenue by job location',
+                  color: 'black',
+                  
+                  position: 'top',
+                  align: 'center',
+                  font: {
+                    size:24,
+                     weight: 'bold'
+                  },
+                  padding: 8,
+                  fullSize: true,
+               }
+            },
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsize: true,
+                plugins: {
+               title: {
+                  display: true,
+                  text: 'Revenue by job type',
+                  color: 'black',
+                  position: 'top',
+                  align: 'center',
+                  font: {
+                    size:24,
+                     weight: 'bold'
+                  },
+                  padding: 8,
+                  fullSize: true,
+               }
+            },
+                scales: {
+                    y: {
+                    beginAtZero: true
+                    }
+                }
+            }
+        });
+        </script>
+    </div>
     
 </body>
 </html>
